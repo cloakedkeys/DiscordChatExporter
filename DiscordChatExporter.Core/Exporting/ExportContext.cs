@@ -126,7 +126,7 @@ internal class ExportContext(DiscordClient discord, ExportRequest request)
         CancellationToken cancellationToken = default
     )
     {
-        if (!Request.ShouldDownloadAssets)
+        if (!Request.ShouldDownloadAssets || !Url.IsHttp(url))
             return url;
 
         try

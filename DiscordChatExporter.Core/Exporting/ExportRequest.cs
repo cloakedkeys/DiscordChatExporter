@@ -49,6 +49,8 @@ public partial class ExportRequest
 
     public bool IsUtcNormalizationEnabled { get; }
 
+    public bool ShouldAppendToHtml { get; }
+
     public ExportRequest(
         Guild guild,
         Channel channel,
@@ -65,7 +67,8 @@ public partial class ExportRequest
         bool shouldDownloadAssets,
         bool shouldReuseAssets,
         string? locale,
-        bool isUtcNormalizationEnabled
+        bool isUtcNormalizationEnabled,
+        bool shouldAppendToHtml = false
     )
     {
         Guild = guild;
@@ -82,6 +85,7 @@ public partial class ExportRequest
         ShouldReuseAssets = shouldReuseAssets;
         Locale = locale;
         IsUtcNormalizationEnabled = isUtcNormalizationEnabled;
+        ShouldAppendToHtml = shouldAppendToHtml;
 
         OutputFilePath = GetOutputBaseFilePath(Guild, Channel, outputPath, Format, After, Before);
 
